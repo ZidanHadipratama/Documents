@@ -1,0 +1,17 @@
+[
+    {
+        "merek": "Samsung",
+        "kapasitas (dalam GB)": 500,
+        "tipe": "NVMe"
+    },
+    {
+        "merek": "Crucial",
+        "kapasitas (dalam GB)": 1000,
+        "tipe": "SATA"
+    },
+    {
+        "merek": "Kingston",
+        "kapasitas (dalam GB)": 250,
+        "tipe": "NVMe"
+    }
+]

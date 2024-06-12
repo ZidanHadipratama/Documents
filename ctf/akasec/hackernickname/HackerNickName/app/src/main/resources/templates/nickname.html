@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <title>HackerNickName - Lobby</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            position: relative;
+        }
+        .no-button {
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const noButton = document.querySelector('.no-button');
+            const body = document.body;
+
+            // Set initial position to the center of the screen
+            const initialX = window.innerWidth / 2;
+            const initialY = window.innerHeight / 2;
+            console.log(initialX, initialY);
+            noButton.style.left = `${initialX}px`;
+            noButton.style.top = `${document.querySelector('.yes-button').top}px`;
+
+            noButton.addEventListener('mouseover', () => {
+                // Calculate boundaries for 100px radius movement
+                const minX = Math.max(0, initialX - 500);
+                const maxX = Math.min(body.clientWidth - noButton.clientWidth, initialX + 500);
+                const minY = Math.max(0, initialY - 500);
+                const maxY = Math.min(body.clientHeight - noButton.clientHeight, initialY + 500);
+
+                const x = Math.floor(Math.random() * (maxX - minX)) + minX;
+                const y = Math.floor(Math.random() * (maxY - minY)) + minY;
+
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            });
+        });
+    </script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center h-screen relative">
+<div class="text-center">
+    <h1 class="text-5xl text-white font-bold mb-8">Hi @<span th:text="${nickname}">Nickname</span></h1>
+    <p class="text-2xl text-white mb-8">Do you like your assigned nickname?</p>
+    <div class="flex justify-center space-x-20 relative mt-10">
+        <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="bg-green-500 relative right-28 yes-button text-white font-bold py-2 px-6 rounded-full shadow-lg transform transition-transform hover:scale-105 focus:outline-none">Yes</button>
+        <button class="fixed no-button bg-red-500 text-white font-bold py-2 px-6 rounded-full shadow-lg transform transition-transform hover:scale-105 focus:outline-none">No</button>
+    </div>
+</div>
+
+<!-- Main modal -->
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+                <p class="flex justify-center text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    🎉🎉🎉
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+</html>

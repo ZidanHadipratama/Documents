@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackerNickNames - Update Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+
+<div class="w-[50%] bg-gray-800 p-8 rounded-lg shadow-lg">
+    <h1 class="text-white text-3xl font-bold mb-4">Enter update link</h1>
+    <form id="form" method="POST">
+        <div class="w-full flex">
+            <input id="url" name="url" type="text" pattern="http://nicknameservice:[0-9]+/.+" value="http://nicknameservice:5000/" class="focus:placeholder-transparent flex-grow p-4 text-white bg-gray-700 border border-gray-600 rounded-l-lg placeholder-white focus:outline-none focus:border-blue-500">
+            <button class="flex mt-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-r-lg focus:outline-none focus:shadow-outline">Update</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById("form").addEventListener("submit", submitForm);
+    function submitForm(e) {
+        e.preventDefault();
+        fetch('/admin/update', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `url=${document.getElementById("url").value}`,
+        })
+            .then(response => {
+                if (response.ok) {
+                    response.text().then(t => alert(t));
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+    }
+</script>
+</body>
+</html>

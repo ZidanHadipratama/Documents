@@ -1,0 +1,17 @@
+[
+    {
+        "merek": "Intel",
+        "generasi": 10,
+        "nama": "i7-10700K"
+    },
+    {
+        "merek": "AMD",
+        "generasi": 3,
+        "nama": "Ryzen 7 3700X"
+    },
+    {
+        "merek": "Intel",
+        "generasi": 11,
+        "nama": "i5-11600K"
+    }
+]

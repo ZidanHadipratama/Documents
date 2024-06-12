@@ -1,0 +1,17 @@
+[
+    {
+        "merek": "ASUS",
+        "untuk processor": "Intel",
+        "nama": "ROG Maximus XII Hero"
+    },
+    {
+        "merek": "MSI",
+        "untuk processor": "AMD",
+        "nama": "MPG X570 GAMING PLUS"
+    },
+    {
+        "merek": "Gigabyte",
+        "untuk processor": "Intel",
+        "nama": "Z490 AORUS ULTRA"
+    }
+]

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackerNickName - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+
+<div class="justify-between items-center flex flex-col bg-gray-800 p-8 rounded-lg shadow-lg">
+    <h1 class="flex text-white text-3xl font-bold mb-4">enter your hacker information</h1>
+    <form id="form" class="gap-4 w-[500px] p-4 flex flex-col items-center justify-between">
+        <input type="text" id="firstName" name="firstName" placeholder="enter your first name" class="flex focus:placeholder-transparent w-full p-4 text-center text-white bg-gray-700 border border-gray-600 rounded-lg placeholder-white focus:outline-none focus:border-blue-500">
+        <input type="text" id="lastName" name="lastName" placeholder="enter your last name" class="flex focus:placeholder-transparent w-full p-4 text-center text-white bg-gray-700 border border-gray-600 rounded-lg placeholder-white focus:outline-none focus:border-blue-500">
+        <input type="text" id="favouriteCategory" name="favouriteCategory" placeholder="enter your favourite category" class="flex focus:placeholder-transparent w-full p-4 text-center text-white bg-gray-700 border border-gray-600 rounded-lg placeholder-white focus:outline-none focus:border-blue-500">
+        <button type="submit" class="flex mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">get my nickname</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("form").addEventListener("submit", submitForm);
+    function submitForm(e) {
+        e.preventDefault();
+        var formData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            favouriteCategory: document.getElementById("favouriteCategory").value
+        };
+
+        fetch('/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => {
+                if (response.ok) {
+                    location = "/nickname";
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+    }
+</script>
+
+</body>
+</html>

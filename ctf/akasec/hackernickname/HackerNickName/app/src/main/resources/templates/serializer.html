@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimental Serializer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 w-full h-full flex items-center justify-center min-h-screen">
+<form method="GET" class="flex items-center justify-center w-full h-full">
+    <div class="flex flex-col justify-between items-center w-[80%] h-[80%] bg-gray-800 p-12 rounded-lg shadow-lg text-center">
+        <h1 class="flex text-4xl font-bold text-white mb-4">Experimental Serializer</h1>
+        <textarea name="serialized" class="flex w-[1000px] h-[600px] p-4 mb-4 text-lg rounded-lg border-2 border-gray-300" placeholder="Enter your serialized data"></textarea>
+        <button type="submit" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Deserialize</button>
+    </div>
+</form>
+</body>
+<script>
+    function decodeURLParameter(param) {
+        return decodeURIComponent(param.replace(/\+/g, ' '));
+    }
+    window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('serialized')) {
+            const serializedValue = urlParams.get('serialized');
+            document.getElementsByName('serialized')[0].value = decodeURLParameter(serializedValue);
+        }
+    };
+</script>
+</html>

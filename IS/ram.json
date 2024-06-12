@@ -1,0 +1,17 @@
+[
+    {
+        "merek": "Corsair",
+        "kapasitas (dalam GB)": 16,
+        "generasi": "DDR4"
+    },
+    {
+        "merek": "G.Skill",
+        "kapasitas (dalam GB)": 32,
+        "generasi": "DDR4"
+    },
+    {
+        "merek": "Kingston",
+        "kapasitas (dalam GB)": 8,
+        "generasi": "DDR3"
+    }
+]
